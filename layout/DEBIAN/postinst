@@ -1,0 +1,19 @@
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+echo "👋 Thank you for installing"
+echo "💪 I work very hard to make good, free and open source tweaks for everyone"
+echo "💰 If you want to support, you can buy me a coffee at www.paypal.me/haoict"
+echo "💖 Hope you enjoy the tweak"
+echo "👨‍💻 Developer: Hao Nguyen"
+echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+
+FILEPATH=/System/Library/Audio/UISounds
+FILES=( "begin_record.caf" "end_record.caf" "photoShutter.caf" )
+
+for file in "${FILES[@]}"
+do
+  if test -f "$FILEPATH/$file"; then
+    mv $FILEPATH/$file $FILEPATH/$file.bak
+  else
+    echo "$FILEPATH/$file does not exist. Nothing to do"
+  fi
+done

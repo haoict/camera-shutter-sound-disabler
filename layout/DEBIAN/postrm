@@ -1,0 +1,11 @@
+FILEPATH=/System/Library/Audio/UISounds
+FILES=( "begin_record.caf" "end_record.caf" "photoShutter.caf" )
+
+for file in "${FILES[@]}"
+do
+  if test -f "$FILEPATH/$file.bak"; then
+    mv $FILEPATH/$file.bak $FILEPATH/$file
+  else
+    echo "$FILEPATH/$file.bak does not exist. Nothing to do"
+  fi
+done
