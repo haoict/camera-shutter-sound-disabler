@@ -1,11 +1,25 @@
-FILEPATH=/System/Library/Audio/UISounds
-FILES=( "begin_record.caf" "end_record.caf" "photoShutter.caf" )
+#!/bin/sh
 
-for file in "${FILES[@]}"
-do
-  if test -f "$FILEPATH/$file.bak"; then
-    mv $FILEPATH/$file.bak $FILEPATH/$file
-  else
-    echo "$FILEPATH/$file.bak does not exist. Nothing to do"
-  fi
-done
+FILEPATH=/System/Library/Audio/UISounds
+# FILES=( "begin_record.caf" "end_record.caf" "photoShutter.caf" )
+FILES0=begin_record.caf
+FILES1=end_record.caf
+FILES2=photoShutter.caf
+
+if test -f "$FILEPATH/$FILES0.bak"; then
+  mv $FILEPATH/$FILES0.bak $FILEPATH/$FILES0
+else
+  echo "$FILEPATH/$FILES0.bak does not exist. Nothing to do"
+fi
+
+if test -f "$FILEPATH/$FILES1.bak"; then
+  mv $FILEPATH/$FILES1.bak $FILEPATH/$FILES1
+else
+  echo "$FILEPATH/$FILES1.bak does not exist. Nothing to do"
+fi
+
+if test -f "$FILEPATH/$FILES2.bak"; then
+  mv $FILEPATH/$FILES2.bak $FILEPATH/$FILES2
+else
+  echo "$FILEPATH/$FILES2.bak does not exist. Nothing to do"
+fi
