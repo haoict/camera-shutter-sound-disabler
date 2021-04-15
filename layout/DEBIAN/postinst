@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 echo "👋 Thank you for installing"
@@ -9,26 +9,13 @@ echo "👨‍💻 Developer: Hao Nguyen"
 echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
 
 FILEPATH=/System/Library/Audio/UISounds
-# FILES=( "begin_record.caf" "end_record.caf" "photoShutter.caf" )
-FILES0=begin_record.caf
-FILES1=end_record.caf
-FILES2=photoShutter.caf
+FILES=( "begin_record.caf" "end_record.caf" "photoShutter.caf" "Modern/camera_shutter_burst.caf" "Modern/camera_shutter_burst_begin.caf" "Modern/camera_shutter_burst_end.caf" )
 
-if test -f "$FILEPATH/$FILES0"; then
-  mv $FILEPATH/$FILES0 $FILEPATH/$FILES0.bak
-else
-  echo "$FILEPATH/$FILES0 does not exist. Nothing to do"
-fi
-
-if test -f "$FILEPATH/$FILES1"; then
-  mv $FILEPATH/$FILES1 $FILEPATH/$FILES1.bak
-else
-  echo "$FILEPATH/$FILES1 does not exist. Nothing to do"
-fi
-
-if test -f "$FILEPATH/$FILES2"; then
-  mv $FILEPATH/$FILES2 $FILEPATH/$FILES2.bak
-else
-  echo "$FILEPATH/$FILES2 does not exist. Nothing to do"
-fi
-
+for file in "${FILES[@]}"
+do
+  if test -f "$FILEPATH/$file"; then
+    mv $FILEPATH/$file $FILEPATH/$file.bak
+  else
+    echo "$FILEPATH/$file does not exist. Nothing to do"
+  fi
+done
